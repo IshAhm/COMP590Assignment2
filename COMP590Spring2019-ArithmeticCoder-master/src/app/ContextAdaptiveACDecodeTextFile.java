@@ -80,10 +80,11 @@ public class ContextAdaptiveACDecodeTextFile {
 			// Update model used (first pixel value)
 			models[0].addToCount(sym);
 			
-			//this part is giving me the problems. Coming out all wrong (shown with file diff)
+			//decode the difference and add the first pixel value to it
 			for(int i1 =0; i1<3; i1++) {
 				int symDiff = decoder.decode(models[1], bit_source);
-				fos.write(symDiff);
+				int ogValue = symDiff + sym;
+				fos.write(ogValue);
 			}
 			
 			
